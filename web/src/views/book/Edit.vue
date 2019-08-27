@@ -30,40 +30,39 @@
 </template>
 
 <script>
-	export default {
-		name: "EditBook",
-        data() {
-			return {
-				bookId: this.$route.params.id,
-				form: {
-					title: '',
-                    description: ''
-                }
-            }
-        },
-		created() {
-			this.getBook();
-		},
-        methods: {
-			async onUpdate() {
-				try {
-					await this.axios.put(`${this.$api_url}book/${this.bookId}/`, this.form);
-                    this.$router.push({name: 'ListBook'});
-				} catch (e) {
-                    console.log(e);
-				}
-            },
-            async getBook() {
-				try {
-					let res = await this.axios.get(`${this.$api_url}book/${this.bookId}/`);
-					this.form = res.data;
-				} catch (e) {
-                    console.log(e);
-				}
-
-            }
-        }
+  export default {
+	name: "EditBook",
+	data() {
+	  return {
+		bookId: this.$route.params.id,
+		form: {
+		  title: '',
+		  description: ''
+		}
+	  }
+	},
+	created() {
+	  this.getBook();
+	},
+	methods: {
+	  async onUpdate() {
+		try {
+		  await this.axios.put(`${this.$api_url}book/${this.bookId}/`, this.form);
+		  this.$router.push({name: 'ListBook'});
+		} catch (e) {
+		  console.log(e);
+		}
+	  },
+	  async getBook() {
+		try {
+		  let res = await this.axios.get(`${this.$api_url}book/${this.bookId}/`);
+		  this.form = res.data;
+		} catch (e) {
+		  console.log(e);
+		}
+	  }
 	}
+  }
 </script>
 
 <style scoped>
