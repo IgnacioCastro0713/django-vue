@@ -6,7 +6,7 @@
         <div class="col-md-12">
           <b-table striped hover :items="books.data" :fields="fields">
             <template slot="action" slot-scope="data">
-              <b-button pill variant="primary">Edit</b-button>
+              <b-button pill variant="primary" :to="{name:'EditBook', params:{id: data.item.id}}">Edit</b-button>
               <b-button pill variant="danger">Delete</b-button>
             </template>
           </b-table>
