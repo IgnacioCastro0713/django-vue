@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Home from './views/Home.vue'
-import {ListBook, EditBook} from './views/book'
+import {ListBook, EditBook, CreateBook} from './views/book'
 
 Vue.use(Router);
 
@@ -23,6 +23,11 @@ export default new Router({
 	  path: '/books/:id/edit',
 	  name: 'EditBook',
 	  component: EditBook
+	},
+	{
+	  path: '/books/create',
+	  name: 'CreateBook',
+	  component: CreateBook
 	},
   ]
 })

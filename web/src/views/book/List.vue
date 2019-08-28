@@ -40,19 +40,19 @@
 		  console.log(e);
 		}
 	  },
-      async onDelete(element) {
+	  async onDelete(element) {
 		await this.confirmDelete().then(async result => {
 		  if (result.value) {
-		    try {
+			try {
 			  await this.axios.delete(`${this.$api_url}book/${element.id}`);
 			  this.books.data.splice(this.books.data.indexOf(element), 1);
 			  this.toast('success', 'Eliminado correctamente.');
 			} catch (e) {
-              console.log(e);
+			  console.log(e);
 			}
 		  }
-        });
-      }
+		});
+	  }
 	}
   }
 </script>
