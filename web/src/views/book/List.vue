@@ -7,7 +7,7 @@
           <b-table striped hover :items="books.data" :fields="fields">
             <template slot="action" slot-scope="data">
               <b-button pill variant="primary" :to="{name:'EditBook', params:{id: data.item.id}}">Edit</b-button>
-              <b-button pill variant="danger" @click="onDelete">Delete</b-button>
+              <b-button pill variant="danger" @click="onDelete(data.item)">Delete</b-button>
             </template>
           </b-table>
         </div>
@@ -40,11 +40,18 @@
 		  console.log(e);
 		}
 	  },
-      async onDelete() {
-		this.$swal.mixin(this.Toast).fire({
-		  type: 'success',
-		  title: 'Eliminado correctamente'
-		});
+      async onDelete(element) {
+		await this.confirmDelete().then(async result => {
+		  if (result.value) {
+		    try {
+			  await this.axios.delete(`${this.$api_url}book/${element.id}`);
+			  this.books.data.splice(this.books.data.indexOf(element), 1);
+			  this.toast('success', 'Eliminado correctamente.');
+			} catch (e) {
+              console.log(e);
+			}
+		  }
+        });
       }
 	}
   }
