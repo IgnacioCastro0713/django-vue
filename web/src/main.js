@@ -11,7 +11,7 @@ import axios from 'axios'
 import VueAxios from 'vue-axios'
 
 import VueSweetalert2 from 'vue-sweetalert2';
-import SwalMixin from './mixins/swal-mixin';
+import SwalMixin from './components/mixins/swal-mixin';
 import 'sweetalert2/dist/sweetalert2.min.css';
 
 Vue.use(BootstrapVue);
